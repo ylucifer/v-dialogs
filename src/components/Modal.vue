@@ -41,7 +41,7 @@
         name: "DialogModal",
         mixins: [mixins],
         props: {
-            component: Object,
+            component: Object | Function,
             /**
              * Send parameters to Component
              * you need use props to receive this params in component
@@ -62,22 +62,36 @@
             dialogCloseButton: {
                 type: Boolean,
                 default: true
+            },
+            fullHeight: {
+                type: Boolean,
+                default: false,
+            },
+            userClass: {
+                type: String,
+                default: false,
             }
         },
         data(){
             return {
-                maximize: false,
+                maximize: this.fullWidth && this.fullHeight,
                 animate: false
             };
         },
         computed: {
             classes(){
-                return {
+                const clazz =  {
                     'v-dialog': true,
                     'v-dialog-modal': true,
                     'v-dialog--maximize': this.maximize,
-                    'v-dialog--buzz-out': this.shake
+                    'v-dialog--buzz-out': this.shake,
+                    'v-dialog-height': this.fullHeight,
+                    'v-dialog-width': this.fullWidth,
                 };
+                if(this.userClass){
+                    clazz[this.userClass] = true;
+                }
+                return clazz;
             }
         },
         methods: {

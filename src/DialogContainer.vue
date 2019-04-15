@@ -24,6 +24,8 @@
                   :closeTime="dlg.closeTime"
                   :cancel="dlg.cancel"
                   :cancelCallback="dlg.cancelCallback"
+                  :fullHeight="dlg.fullHeight"
+                  :userClass="dlg.userClass"
                   @close="closeDialog"></v-dialog>
     </div>
 </template>

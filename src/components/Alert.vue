@@ -68,6 +68,10 @@
              * @type string
              */
             singletonKey: String,
+            fullWidth: {
+                type: Boolean,
+                default: false
+            },
         },
         computed: {
             alertShadow(){
