@@ -4,7 +4,7 @@
              @click.self="outsideClick" >
 
             <div :class="['v-dialog-dialog', {'v-dialog-default-animated': animate}]"
-                 :style="{width:width+'px',height:height+'px',top:dialogTop+'px'}">
+                 :style="calcStyle">
                 <transition name="v-dialog--smooth" :appear="true" >
                     <div :class="['v-dialog-content']" v-show="show" >
 
@@ -37,6 +37,7 @@
 
 <script>
     import mixins from '../mixins';
+
     export default {
         name: "DialogModal",
         mixins: [mixins],
@@ -69,7 +70,11 @@
             },
             userClass: {
                 type: String,
-                default: false,
+                default: "",
+            },
+            maxWidth: {
+                type: Number,
+                default: null,
             }
         },
         data(){
@@ -92,6 +97,23 @@
                     clazz[this.userClass] = true;
                 }
                 return clazz;
+            },
+            calcStyle(){
+                const style = {
+                    width: this.width + "px",
+                    height: this.height + "px",
+                    top: this.dialogTop + "px",
+                };
+
+                if(this.maxWidth){
+                    style["max-width"] = this.maxWidth + "px";
+                }
+
+                if (this.maxHeight) {
+                    style["max-height"] = this.maxHeight + "px";
+                }
+
+                return style;
             }
         },
         methods: {

@@ -26,6 +26,7 @@
                   :cancelCallback="dlg.cancelCallback"
                   :fullHeight="dlg.fullHeight"
                   :userClass="dlg.userClass"
+                  :maxWidth="dlg.maxWidth"
                   @close="closeDialog"></v-dialog>
     </div>
 </template>
