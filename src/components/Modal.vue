@@ -75,6 +75,10 @@
             maxWidth: {
                 type: Number,
                 default: null,
+            },
+            maxHeight: {
+                type: Number,
+                default: null,
             }
         },
         data(){
