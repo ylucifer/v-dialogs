@@ -7,6 +7,7 @@ const Plugin = {
     install(Vue, options = {}){
         const Dialog = Vue.component(vDialog.name, vDialog), dlg = new Dialog();
         document.body.appendChild(dlg.$mount().$el);
+        dlg.$store = options.$store;
 
         const mergeParams = (p)=>{
             const params = {};

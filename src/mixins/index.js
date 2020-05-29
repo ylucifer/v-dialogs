@@ -31,7 +31,7 @@ export default {
          * @type number
          */
         width: {
-            type: Number,
+            type: Number | String,
             default: 700
         },
         /**
@@ -39,7 +39,7 @@ export default {
          * @type number
          */
         height: {
-            type: Number,
+            type: Number | String,
             default: 400
         },
         i18n: Object,
