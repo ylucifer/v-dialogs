@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="v-dialog-box">
         <dlg-modal v-bind="$attrs" v-on="$listeners" v-if="type === 'modal'"></dlg-modal>
         <dlg-alert v-bind="$attrs" v-on="$listeners" v-if="type === 'alert'"></dlg-alert>
         <dlg-mask v-bind="$attrs" v-on="$listeners" v-if="type === 'mask'"></dlg-mask>
@@ -32,7 +32,12 @@
                 type: String,
                 default: 'modal',
                 required: true
-            }
+            },
+            component: Object | Function,
+            params: Object,
+            i18n: Object,
+            cancelcallback: Function,
+            titlebar: String,
         },
         provide(){
             return {

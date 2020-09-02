@@ -97,9 +97,6 @@
                     'v-dialog-height': this.fullHeight,
                     'v-dialog-width': this.fullWidth,
                 };
-                if(this.userClass){
-                    clazz[this.userClass] = true;
-                }
                 return clazz;
             },
             calcStyle(){
