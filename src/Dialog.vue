@@ -33,11 +33,6 @@
                 default: 'modal',
                 required: true
             },
-            component: Object | Function,
-            params: Object,
-            i18n: Object,
-            cancelcallback: Function,
-            titlebar: String,
         },
         provide(){
             return {

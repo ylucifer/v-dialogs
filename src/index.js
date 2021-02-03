@@ -27,6 +27,30 @@ const Plugin = {
 			return params;
 		}, instanceName = options.instanceName ? options.instanceName : '$dlg';
 
+        function innerQuick(rawParam, type){
+            if(!rawParam.length || !rawParam[0]) return;
+
+            const params = [];
+            params[0] = rawParam[0];
+
+            if(rawParam.length >= 2){
+                params[1] = rawParam[1];
+            }else{
+                params[1] = null;
+            }
+
+            if(rawParam.length >= 3){
+                params[2] = rawParam[2];
+                params[2].messageType = type;
+            }else{
+                rawParam[2] = { messageType: type };
+            }
+
+            console.log(params);
+
+            return dlg.addAlert(paramSet(params));
+        }
+
         Vue.prototype[instanceName] = {
             modal(component, params = {}){
                 if(!component) return;
@@ -55,6 +79,15 @@ const Plugin = {
                 if(!arguments.length || !arguments[0]) return;
                 return dlg.addAlert(paramSet(arguments));
             },
+            error() {
+                return innerQuick(arguments, "error");
+            },
+            success(){
+               return innerQuick(arguments, "success");
+            },
+            confirm(){
+                return innerQuick(arguments, "confirm");
+            },
             mask(){
                 return dlg.addMask(paramSet(arguments));
             },
@@ -67,7 +100,7 @@ const Plugin = {
             },
             closeAll(callback){
                 dlg.closeAll(callback);
-            }
+            },
         };
     }
 };
